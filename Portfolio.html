@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="facebook-domain-verification" content="optional">
+    <title>Joshua Y. Singuelas · Full Stack Dev & UI/UX Designer</title>
+    <link rel="shorcut icon" type="x-icon" href="./images/normal.jfif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f8;
+            color: #0a0f1c;
+            transition: background 0.4s ease, color 0.3s ease;
+            line-height: 1.5;
+            padding: 0;
+            margin: 0;
+        }
+
+        body.dark {
+            background: #070b14;
+            color: #eef2ff;
+        }
+
+        .resume-container {
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            background: #ffffff;
+            box-shadow: none;
+            overflow: hidden;
+            transition: background 0.3s, box-shadow 0.3s;
+            border-radius: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .resume-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                border-radius: 32px;
+                box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            }
+        }
+
+        body.dark .resume-container {
+            background: #0e1322;
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        body.dark .resume-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo i {
+            background: none;
+            color: #3b82f6;
+            font-size: 1rem;
+        }
+
+        #toggleBtn {
+            background: rgba(59, 130, 246, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.25s;
+            color: #1e293b;
+        }
+
+        body.dark #toggleBtn {
+            background: rgba(96, 165, 250, 0.12);
+            border-color: rgba(96, 165, 250, 0.25);
+            color: #e2e8f0;
+        }
+
+        #toggleBtn:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .resume-grid {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .resume-grid {
+                display: grid;
+                grid-template-columns: 34% 66%;
+                flex-direction: row;
+            }
+        }
+
+        .sidebar {
+            background: #fafcff;
+            padding: 20px 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                border-right: 1px solid rgba(0, 0, 0, 0.04);
+                border-bottom: none;
+                padding: 28px 20px;
+            }
+        }
+
+        body.dark .sidebar {
+            background: #0b1020;
+            border-right-color: rgba(255, 255, 255, 0.04);
+        }
+
+        .avatar-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .avatar-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @media (min-width: 768px) {
+            .avatar-img {
+                width: 130px;
+                height: 130px;
+                border: 4px solid white;
+            }
+        }
+
+        body.dark .avatar-img {
+            border-color: #0e1322;
+            box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.5);
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 2px;
+            right: -2px;
+            background: #1877f2;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        @media (min-width: 768px) {
+            .verified-badge {
+                width: 28px;
+                height: 28px;
+                bottom: 5px;
+                right: 2px;
+                border: 3px solid white;
+            }
+        }
+
+        body.dark .verified-badge {
+            border-color: #0e1322;
+        }
+
+        .verified-badge i {
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        .verified-badge:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            20% {
+                transform: rotate(25deg);
+            }
+
+            40% {
+                transform: rotate(-10deg);
+            }
+
+            60% {
+                transform: rotate(20deg);
+            }
+
+            80% {
+                transform: rotate(-5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .hand-wave {
+            display: inline-block;
+            animation: wave 0.8s ease-in-out infinite;
+            transform-origin: 70% 70%;
+            cursor: pointer;
+        }
+
+        @keyframes peace {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-5px) scale(1.05);
+            }
+
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+        }
+
+        .hand-peace {
+            display: inline-block;
+            animation: peace 1.2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .job-title {
+            text-align: center;
+            font-weight: 800;
+            font-size: 1rem;
+            margin: 10px 0 4px;
+            background: linear-gradient(120deg, #1e293b, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .job-title {
+                font-size: 1.1rem;
+                margin: 12px 0 6px;
+            }
+        }
+
+        .job-title i {
+            background: none;
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+
+        .job-badge {
+            text-align: center;
+            background: #e6f0ff;
+            display: inline-block;
+            width: 100%;
+            padding: 5px 0;
+            border-radius: 60px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 4px;
+        }
+
+        body.dark .job-badge {
+            background: #1a253c;
+            color: #93c5fd;
+        }
+
+        .info-section {
+            margin: 20px 0;
+        }
+
+        .info-title {
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #4b5563;
+            margin-bottom: 12px;
+            border-left: 3px solid #3b82f6;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        body.dark .info-title {
+            color: #94a3b8;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.7rem;
+            word-break: break-word;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 3px 0;
+            border-radius: 12px;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            color: #2563eb;
+        }
+
+        .contact-item i {
+            width: 22px;
+            color: #3b82f6;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .skills-carousel-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .skills-slider {
+            display: flex;
+            gap: 8px;
+            animation: slideSkills 40s linear infinite;
+            width: max-content;
+        }
+
+        .skills-slider span {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        body.dark .skills-slider span {
+            background: #111827;
+            border-color: #283548;
+            color: #cbd5e6;
+        }
+
+        .skills-slider span i {
+            font-size: 0.65rem;
+            color: #3b82f6;
+        }
+
+        @keyframes slideSkills {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .skills-category {
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+
+        .skills-category-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .skills-category-title i {
+            font-size: 0.65rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: #eef2ff;
+            padding: 3px 10px;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #1e40af;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        body.dark .skill-tag {
+            background: #1e293b;
+            color: #93c5fd;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            background: #3b82f6;
+            color: white;
+        }
+
+        .main-content {
+            padding: 20px 16px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                padding: 28px 24px;
+            }
+        }
+
+        .greeting {
+            margin-bottom: 24px;
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.03), rgba(59, 130, 246, 0.01));
+            padding: 14px 16px;
+            border-radius: 24px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        body.dark .greeting {
+            background: rgba(59, 130, 246, 0.04);
+            border-color: rgba(59, 130, 246, 0.15);
+        }
+
+        .greeting h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .greeting h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .greeting h1 span {
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hand-icon {
+            font-size: 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .hand-icon {
+                font-size: 1.8rem;
+            }
+        }
+
+        .greeting p {
+            margin-top: 10px;
+            opacity: 0.8;
+            line-height: 1.5;
+            font-size: 0.8rem;
+        }
+
+        .resume-section {
+            margin-bottom: 24px;
+        }
+
+        .resume-section h3 {
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .resume-section h3 i {
+            color: #3b82f6;
+            font-size: 1rem;
+        }
+
+        .exp-item {
+            margin-bottom: 18px;
+            padding-left: 6px;
+            border-left: 2px solid #e2e8f0;
+            transition: 0.2s;
+        }
+
+        body.dark .exp-item {
+            border-left-color: #25314d;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .exp-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .exp-title i {
+            color: #3b82f6;
+            font-size: 0.7rem;
+        }
+
+        .exp-date {
+            font-size: 0.6rem;
+            font-weight: 500;
+            background: #eef2ff;
+            padding: 2px 6px;
+            border-radius: 40px;
+            color: #1e40af;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        body.dark .exp-date {
+            background: #1e293b;
+            color: #94a3f8;
+        }
+
+        .exp-company {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin: 5px 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .exp-desc {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            line-height: 1.45;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px 14px;
+            transition: all 0.3s ease;
+            border: 1px solid #eef2ff;
+            cursor: pointer;
+        }
+
+        body.dark .project-card {
+            background: #0f1627;
+            border-color: #20273f;
+        }
+
+        .project-card:hover {
+            transform: translateX(5px) translateY(-2px);
+            background: #ffffff;
+            border-color: #bfdbfe;
+        }
+
+        body.dark .project-card:hover {
+            background: #121a2f;
+            border-color: #3b82f6;
+        }
+
+        .project-name {
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-name i:first-child {
+            margin-right: 6px;
+            color: #3b82f6;
+        }
+
+        .project-desc {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .certification-card {
+            background: linear-gradient(145deg, #f8faff, #ffffff);
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        body.dark .certification-card {
+            background: #0f1627;
+            border-color: #25314d;
+        }
+
+        .certification-card:hover {
+            transform: translateX(8px);
+            border-color: #3b82f6;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .cert-info-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .cert-icon {
+            background: #3b82f6;
+            width: 42px;
+            height: 42px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .cert-text h4 {
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .cert-text p {
+            font-size: 0.65rem;
+            opacity: 0.7;
+        }
+
+        .cert-arrow {
+            color: #3b82f6;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .certification-card:hover .cert-arrow {
+            transform: translateX(6px);
+        }
+
+        footer {
+            padding: 12px 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            text-align: center;
+            font-size: 0.6rem;
+            opacity: 0.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        body.dark footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .scroll-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background: #2563eb;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #1f2937;
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            z-index: 1001;
+            font-size: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cookie-consent button {
+            background: #3b82f6;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.2s;
+        }
+
+        .cookie-consent button:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 550px) {
+            .cookie-consent {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 20px;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 32px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 24px 20px 20px;
+            position: relative;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        body.dark .modal-content {
+            background: #121826;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: 0.2s;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: #ef4444;
+            transform: scale(1.1);
+        }
+
+        .modal-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        body.dark .modal-title {
+            background: linear-gradient(135deg, #e2e8f0, #60a5fa);
+            background-clip: text;
+        }
+
+        .image-gallery {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            cursor: grab;
+            margin: 16px 0;
+            border-radius: 20px;
+        }
+
+        .image-gallery:active {
+            cursor: grabbing;
+        }
+
+        .gallery-track {
+            display: inline-flex;
+            gap: 16px;
+            padding: 8px 4px;
+        }
+
+        .gallery-item {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            width: 280px;
+            background: #f8fafc;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        body.dark .gallery-item {
+            background: #1e293b;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-label {
+            padding: 10px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            background: white;
+            color: #1e293b;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        body.dark .img-label {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-top-color: #334155;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-item {
+                width: 320px;
+            }
+
+            .gallery-img {
+                height: 190px;
+            }
+        }
+
+        .image-gallery::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+
+        body.dark .image-gallery::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        .modal-detail {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 16px 0 12px;
+            color: #334155;
+            text-align: center;
+        }
+
+        body.dark .modal-detail {
+            color: #cbd5e1;
+        }
+
+        .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 16px;
+        }
+
+        body.dark .modal-tech {
+            border-top-color: #2d3748;
+        }
+
+        .tech-badge {
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        body.dark .tech-badge {
+            background: #1e293b;
+            color: #93c5fd;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            margin-top: 20px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 20px;
+            border-radius: 40px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #ef4444;
+            transform: scale(1.1);
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937cc;
+            backdrop-filter: blur(16px);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            z-index: 1000;
+            font-weight: 500;
+            max-width: 90vw;
+            white-space: normal;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 767px) {
+            .contact-item span {
+                word-break: break-all;
+                flex: 1;
+            }
+
+            .modal-content {
+                padding: 20px 16px;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
+            }
+
+            .gallery-item {
+                width: 240px;
+            }
+
+            .gallery-img {
+                height: 140px;
+            }
+
+            .img-label {
+                font-size: 0.65rem;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="resume-container">
+        <div class="resume-header">
+            <div class="logo"><i class="fas fa-code"></i> JOSHUA Y. SINGUELAS</div>
+            <button id="toggleBtn"><i id="themeIcon" class="fas fa-moon"></i> <span id="themeText">Dark
+                    Mode</span></button>
+        </div>
+
+        <div class="resume-grid">
+            <aside class="sidebar">
+                <div class="avatar-wrapper">
+                    <div class="avatar-container">
+                        <img id="profileImg" class="avatar-img" src="./images/normal.jfif" alt="Joshua Singuelas">
+                        <div class="verified-badge" id="verifiedBadge">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-title">
+                    <i class="fas fa-layer-group"></i> Full Stack Developer
+                    <i class="fas fa-microchip"></i> AI
+                    <i class="fas fa-paint-brush"></i> UI/UX Designer
+                </div>
+                <div class="job-badge"><i class="fas fa-map-marker-alt"></i> Remote · Negros Occidental, PH</div>
+
+                <div class="info-section">
+                    <div class="info-title"><i class="fas fa-address-card"></i> CONTACT</div>
+                    <div class="contact-item" data-link="https://github.com/Zipone34"><i class="fab fa-github"></i>
+                        <span>github.com/Zipone34</span>
+                    </div>
+                    <div class="contact-item" data-link="#"><i class="fab fa-facebook"></i>
+                        <span>facebook.com/joshuasinguelas</span>
+                    </div>
+                    <div class="contact-item" data-link="https://tiktok.com/@joshuasinguelas"><i
+                            class="fab fa-tiktok"></i> <span>@joshuasinguelas</span></div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-title"><i class="fas fa-cogs"></i> TECH SKILLS</div>
+                    <div class="skills-carousel-container">
+                        <div class="skills-slider">
+                            <span><i class="fab fa-html5"></i> HTML5</span>
+                            <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span><i class="fab fa-js"></i> JavaScript</span>
+                            <span><i class="fab fa-react"></i> React JS</span>
+                            <span><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span><i class="fab fa-react"></i> React Native</span>
+                            <span><i class="fab fa-php"></i> PHP</span>
+                            <span><i class="fab fa-laravel"></i> Laravel</span>
+                            <span><i class="fas fa-database"></i> MySQL</span>
+                            <span><i class="fab fa-figma"></i> Figma</span>
+                            <span><i class="fab fa-python"></i> Python</span>
+                            <span><i class="fab fa-java"></i> Java</span>
+                            <span><i class="fab fa-tailwind"></i> Tailwind</span>
+                            <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span><i class="fab fa-sass"></i> SASS</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title"><i class="fas fa-code"></i> Front End</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="skill-tag"><i class="fab fa-react"></i> React JS</span>
+                            <span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span class="skill-tag"><i class="fab fa-react"></i> React Native</span>
+                            <span class="skill-tag"><i class="fab fa-tailwind"></i> Tailwind CSS</span>
+                            <span class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span class="skill-tag"><i class="fab fa-sass"></i> SASS/SCSS</span>
+                            <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
+                            <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title"><i class="fas fa-server"></i> Back End</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+                            <span class="skill-tag"><i class="fab fa-laravel"></i> Laravel</span>
+                            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> REST API</span>
+                            <span class="skill-tag"><i class="fas fa-shield-alt"></i> JWT Auth</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title"><i class="fas fa-database"></i> Database</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="skill-tag"><i class="fas fa-leaf"></i> MongoDB</span>
+                            <span class="skill-tag"><i class="fas fa-fire"></i> Firebase</span>
+                            <span class="skill-tag"><i class="fas fa-database"></i> SQLite</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title"><i class="fas fa-code"></i> Code Editor / Compiler /
+                            Interpreters</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag"><i class="fas fa-code"></i> VS Code</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> IntelliJ IDEA</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> PyCharm</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> PhpStorm</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> Sublime Text</span>
+                            <span class="skill-tag"><i class="fas fa-code"></i> Atom</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> GCC Compiler</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> Python Interpreter</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> Node.js Runtime</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> PHP Interpreter</span>
+                            <span class="skill-tag"><i class="fab fa-java"></i> JVM / JDK</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> Bash / Zsh</span>
+                            <span class="skill-tag"><i class="fas fa-terminal"></i> Git CLI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-title"><i class="fas fa-language"></i> LANGUAGES</div>
+                    <div class="contact-item"><i class="fas fa-comment-dots"></i> English (Fluent)</div>
+                    <div class="contact-item"><i class="fas fa-comment-dots"></i> Filipino (Native)</div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="greeting">
+                    <h1><i class="fas fa-hand-peace hand-icon" id="handIcon"></i> Hello, I'm <span>Joshua Y.
+                            Singuelas</span></h1>
+                    <p>Full Stack Developer & UI/UX Designer from Negros Occidental, Philippines. 5+ years of experience
+                        building scalable web applications and crafting intuitive user interfaces.</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title"><i class="fas fa-laptop-code"></i> Freelance Developer</span>
+                            <span class="exp-date"><i class="far fa-calendar-alt"></i> 2019 – Present</span>
+                        </div>
+                        <div class="exp-company"><i class="fas fa-globe"></i> Self-Employed / Upwork · Fiverr</div>
+                        <div class="exp-desc">custom web applications and UI/UX designs. Full-stack
+                            development using React, Vue.js, Laravel, Node.js, and MySQL.</div>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-code-branch"></i> Featured Projects</h3>
+                    <div class="project-list">
+                        <div class="project-card" data-project="website">
+                            <div class="project-name"><span><i class="fas fa-globe"></i> Website Projects</span> <i
+                                    class="fas fa-arrow-right"></i></div>
+                            <div class="project-desc">Custom portfolio websites, e-commerce platforms, and corporate
+                                landing pages.</div>
+                        </div>
+                        <div class="project-card" data-project="webapp">
+                            <div class="project-name"><span><i class="fas fa-cogs"></i> Web Application</span> <i
+                                    class="fas fa-arrow-right"></i></div>
+                            <div class="project-desc">Scalable full-stack web apps including inventory management and
+                                CRM systems.</div>
+                        </div>
+                        <div class="project-card" data-project="mobile">
+                            <div class="project-name"><span><i class="fas fa-mobile-alt"></i> Mobile Application</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="project-desc">Cross-platform mobile apps using React Native with real-time sync.
+                            </div>
+                        </div>
+                        <div class="project-card" data-project="uiux">
+                            <div class="project-name"><span><i class="fas fa-paint-brush"></i> UI/UX Design</span> <i
+                                    class="fas fa-arrow-right"></i></div>
+                            <div class="project-desc">Beautiful, user-centered interface designs, wireframes,
+                                prototypes, and design systems using Figma.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Bachelor of Science in Information System</span>
+                            <span class="exp-date">2022 – 2026</span>
+                        </div>
+                        <div class="exp-company">I Tech College Inc. · Bago City</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Senior High School Graduate</span>
+                            <span class="exp-date">2020 – 2022</span>
+                        </div>
+                        <div class="exp-company">I-Tech Computer Education Inc. · Bago City</div>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATION SECTION -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <div class="certification-card" id="certificationTrigger">
+                        <div class="cert-info-left">
+                            <div class="cert-icon"><i class="fas fa-award"></i></div>
+                            <div class="cert-text">
+                                <h4><i class="far fa-file"></i> View All Certifications & Achievements</h4>
+                                <p>Click to explore my professional credentials (5+ verified certificates)</p>
+                            </div>
+                        </div>
+                        <div class="cert-arrow"><i class="fas fa-chevron-circle-right"></i></div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <footer>
+            <i class="far fa-copyright"></i> 2026 Joshua Y. Singuelas — Full Stack Dev & UI/UX Designer
+        </footer>
+    </div>
+
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="cookieConsent" class="cookie-consent" style="display: none;">
+        <span><i class="fas fa-cookie-bite"></i> We use cookies to remember your theme preferences and enhance your
+            experience.</span>
+        <div>
+            <button id="acceptCookies">Accept Cookies</button>
+        </div>
+    </div>
+
+    <!-- MODAL FOR CERTIFICATIONS -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="certModalClose">&times;</span>
+            <div class="modal-icon"><i class="fas fa-certificate"></i></div>
+            <div class="modal-title" id="certModalTitle">🏅 Professional Certifications</div>
+            <div class="image-gallery" id="certGallery">
+                <div class="gallery-track" id="certGalleryTrack"></div>
+            </div>
+            <div class="modal-detail" id="certModalDetail">Industry-recognized certifications that showcase my expertise
+                in modern web development, UI/UX design, and full-stack engineering.</div>
+            <div class="modal-tech" id="certModalTech"></div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR PROJECTS -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="projectModalClose">&times;</span>
+            <div class="modal-icon" id="projectModalIcon"><i class="fas fa-globe"></i></div>
+            <div class="modal-title" id="projectModalTitle">Website Projects</div>
+            <div class="image-gallery" id="projectGallery">
+                <div class="gallery-track" id="projectGalleryTrack"></div>
+            </div>
+            <div class="modal-detail" id="projectModalDetail">Detailed information about the project will appear here.
+            </div>
+            <div class="modal-tech" id="projectModalTech"></div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" alt="Full size image">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script>
+        // ==================== CERTIFICATIONS DATA ====================
+        const certificationsData = {
+            title: "🏅 Professional Certifications",
+            detail: "Industry-recognized certifications that showcase my expertise in modern web development, UI/UX design, and full-stack engineering.",
+            images: [
+                { src: "./images/Html.jfif", label: "Html Certificate" },
+                { src: "./images/Css.jfif", label: "Css Certificate" },
+                { src: "./images/Javascript.jfif", label: "Javascipt Certificate" },
+                { src: "./images/Php.jfif", label: "Php Certificate" },
+                { src: "./images/Laravel.jfif", label: "Laravel Certification" },
+                { src: "./images/React Native.jfif", label: "React Native Certification" },
+                { src: "./images/Java.jfif", label: "Java Certification" },
+                { src: "./images/Sql.jfif", label: "Sql Certification" },
+                { src: "./images/Ehtical Hacking.jfif", label: "Ethical Hacking Certification" },
+                { src: "./images/Web Development.jfif", label: "Web Development Certification" },
+                { src: "./images/ResposiveWebDesign.jfif", label: "Responsive Web Design Certification" },
+            ],
+            tech: ["React", "UI/UX", "Full Stack", "AWS", "Laravel", "Responsive Design"]
+        };
+
+        // ==================== PROJECTS DATA ====================
+        const projectData = {
+            website: {
+                title: "🌐 Website Projects",
+                icon: "fa-globe",
+                images: [
+                    { src: "./images/Ben_10_Picture.png", label: "Ben 10 Website - Cartoon Website" },
+                    { src: "./images/PowerRanger_Picture.png", label: "PowerRangerJungle Fury - Power Ranger Website" },
+                    { src: "./images/E_Commerce_Website_Picture.png", label: "E-Commerce Website - Online Store with Cart Website" },
+                ],
+                detail: "Modern, responsive websites tailored to your brand. From portfolios to e-commerce platforms, each project features clean code, SEO optimization, and pixel-perfect UI/UX design.",
+                tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "SEO"]
+            },
+            webapp: {
+                title: "⚙️ Web Application",
+                icon: "fa-cogs",
+                images: [
+                    { src: "./images/SESMS_Picture.png", label: "Social Economic Status Monitoring System | FullStack Application" },
+                    { src: "./images/SCSMS_Picture.png", label: "Senior Citizen Service Management System | FullStack Application" },
+                    { src: "./images/RMS_Picture.png", label: "Restuarant Management System | FullStack Application" },
+                    { src: "./images/BMS_Picture.png", label: "Banking Management System | FullStack Application" },
+                ],
+                detail: "Scalable full-stack web applications with RESTful APIs, JWT authentication, and optimized databases. Perfect for inventory management, CRM, and real-time dashboards.",
+                tech: ["React", "Laravel", "REST API", "MySQL", "JWT Auth"]
+            },
+            mobile: {
+                title: "📱 Mobile Application",
+                icon: "fa-mobile-alt",
+                images: [
+                    { src: "./images/Rider_Picture.jfif", label: "Food Rider App | Mobile Application" },
+                ],
+                detail: "Cross-platform mobile apps with offline-first architecture, push notifications, and beautiful animations. Built with React Native for native performance on iOS and Android.",
+                tech: ["React Native", "Firebase", "REST API", "Redux"]
+            },
+            uiux: {
+                title: "🎨 UI/UX Design",
+                icon: "fa-paint-brush",
+                images: [
+                    { src: "./images/2monkeysMobileApp_Picture.png", label: "2 Monkeys Mobile App - UI/UX Design" },
+                ],
+                detail: "User-centered design solutions that blend aesthetics with functionality. I create wireframes, interactive prototypes, design systems, and user flows using Figma, ensuring seamless experiences across all devices.",
+                tech: ["Figma", "Wireframing", "Prototyping", "User Research", "Design Systems"]
+            }
+        };
+
+        // ==================== LIGHTBOX FUNCTIONS ====================
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+        const lightboxClose = document.querySelector(".lightbox-close");
+
+        function openLightbox(imgSrc, label) {
+            lightboxImg.src = imgSrc;
+            lightboxCaption.textContent = label;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+        if (lightbox) {
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+        }
+
+        // ==================== BUILD GALLERY FUNCTION ====================
+        function buildGallery(containerId, images) {
+            const galleryTrack = document.getElementById(containerId);
+            if (!galleryTrack) return;
+            galleryTrack.innerHTML = "";
+            images.forEach((img) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("gallery-item");
+
+                const imgElement = document.createElement("img");
+                imgElement.src = img.src;
+                imgElement.classList.add("gallery-img");
+                imgElement.alt = img.label;
+
+                const labelSpan = document.createElement("div");
+                labelSpan.classList.add("img-label");
+                labelSpan.innerHTML = `<i class="fas fa-expand" style="margin-right: 8px; font-size: 0.65rem;"></i> ${img.label} <i class="fas fa-search-plus" style="margin-left: 8px; font-size: 0.65rem; opacity:0.7;"></i>`;
+
+                itemDiv.appendChild(imgElement);
+                itemDiv.appendChild(labelSpan);
+                itemDiv.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    openLightbox(img.src, img.label);
+                });
+                galleryTrack.appendChild(itemDiv);
+            });
+        }
+
+        // ==================== CERTIFICATION MODAL ====================
+        const certModal = document.getElementById("certModal");
+        const certModalTitle = document.getElementById("certModalTitle");
+        const certModalDetail = document.getElementById("certModalDetail");
+        const certModalTech = document.getElementById("certModalTech");
+        const certModalClose = document.getElementById("certModalClose");
+        const certificationTrigger = document.getElementById("certificationTrigger");
+
+        function openCertModal() {
+            if (!certModal) return;
+            certModalTitle.innerHTML = certificationsData.title;
+            certModalDetail.innerHTML = certificationsData.detail;
+            if (certificationsData.tech && certificationsData.tech.length > 0) {
+                certModalTech.innerHTML = certificationsData.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+            } else {
+                certModalTech.innerHTML = '<span class="tech-badge">Verified Credentials</span>';
+            }
+            buildGallery("certGalleryTrack", certificationsData.images);
+            certModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeCertModal() {
+            if (certModal) {
+                certModal.style.display = "none";
+                document.body.style.overflow = "";
+            }
+        }
+
+        if (certModalClose) certModalClose.addEventListener("click", closeCertModal);
+        if (certModal) {
+            window.addEventListener("click", (e) => {
+                if (e.target === certModal) closeCertModal();
+            });
+        }
+        if (certificationTrigger) certificationTrigger.addEventListener("click", openCertModal);
+
+        // ==================== PROJECT MODAL ====================
+        const projectModal = document.getElementById("projectModal");
+        const projectModalTitle = document.getElementById("projectModalTitle");
+        const projectModalDetail = document.getElementById("projectModalDetail");
+        const projectModalIcon = document.getElementById("projectModalIcon");
+        const projectModalTech = document.getElementById("projectModalTech");
+        const projectModalClose = document.getElementById("projectModalClose");
+
+        function openProjectModal(projectType) {
+            const data = projectData[projectType];
+            if (!data || !projectModal) return;
+            projectModalTitle.innerHTML = data.title;
+            projectModalDetail.innerHTML = data.detail;
+            projectModalIcon.innerHTML = `<i class="fas ${data.icon}"></i>`;
+            if (data.tech && data.tech.length > 0) {
+                projectModalTech.innerHTML = data.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+            } else {
+                projectModalTech.innerHTML = '<span class="tech-badge">No tech stack specified</span>';
+            }
+            buildGallery("projectGalleryTrack", data.images);
+            projectModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeProjectModal() {
+            if (projectModal) {
+                projectModal.style.display = "none";
+                document.body.style.overflow = "";
+            }
+        }
+
+        if (projectModalClose) projectModalClose.addEventListener("click", closeProjectModal);
+        if (projectModal) {
+            window.addEventListener("click", (e) => {
+                if (e.target === projectModal) closeProjectModal();
+            });
+        }
+
+        // Attach click events to all project cards
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const projectType = card.getAttribute("data-project");
+                if (projectType) openProjectModal(projectType);
+            });
+        });
+
+        // ==================== SCROLL TO TOP ====================
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        function toggleScrollTopButton() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        window.addEventListener("scroll", toggleScrollTopButton);
+        if (scrollTopBtn) scrollTopBtn.addEventListener("click", scrollToTop);
+
+        // ==================== COOKIE & THEME FUNCTIONS ====================
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function checkCookieConsent() {
+            return getCookie("cookiesAccepted") === "true";
+        }
+
+        const toggleBtn = document.getElementById("toggleBtn");
+        const profileImg = document.getElementById("profileImg");
+        const body = document.body;
+        const themeIcon = document.getElementById("themeIcon");
+        const themeText = document.getElementById("themeText");
+        const verifiedBadge = document.getElementById("verifiedBadge");
+        const handIcon = document.getElementById("handIcon");
+
+        let isDark = false;
+        const cookiesAccepted = checkCookieConsent();
+
+        if (cookiesAccepted) {
+            const savedTheme = getCookie("theme");
+            if (savedTheme === "dark") {
+                isDark = true;
+            } else if (savedTheme === "light") {
+                isDark = false;
+            } else {
+                isDark = localStorage.getItem("mode") === "dark";
+            }
+        } else {
+            isDark = localStorage.getItem("mode") === "dark";
+        }
+
+        const normalImage = "./images/normal.jfif";
+        const shyImage = "./images/shy.png";
+
+        function updateHandIcon() {
+            if (!handIcon) return;
+            handIcon.classList.remove("hand-wave", "hand-peace");
+            if (isDark) handIcon.classList.add("hand-peace");
+            else handIcon.classList.add("hand-wave");
+        }
+
+        function saveThemePreference() {
+            const themeValue = isDark ? "dark" : "light";
+            if (checkCookieConsent()) {
+                setCookie("theme", themeValue, 365);
+            }
+            localStorage.setItem("mode", themeValue);
+        }
+
+        function updateTheme() {
+            if (isDark) {
+                body.classList.add("dark");
+                if (profileImg) profileImg.src = shyImage;
+                if (themeIcon) themeIcon.className = "fas fa-sun";
+                if (themeText) themeText.innerText = "Light Mode";
+            } else {
+                body.classList.remove("dark");
+                if (profileImg) profileImg.src = normalImage;
+                if (themeIcon) themeIcon.className = "fas fa-moon";
+                if (themeText) themeText.innerText = "Dark Mode";
+            }
+            updateHandIcon();
+            saveThemePreference();
+        }
+
+        if (isDark) updateTheme();
+        else {
+            body.classList.remove("dark");
+            if (profileImg) profileImg.src = normalImage;
+            if (themeIcon) themeIcon.className = "fas fa-moon";
+            if (themeText) themeText.innerText = "Dark Mode";
+            if (!cookiesAccepted) localStorage.setItem("mode", "light");
+            else setCookie("theme", "light", 365);
+            updateHandIcon();
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener("click", () => {
+                isDark = !isDark;
+                updateTheme();
+                showMessage(isDark ? "Dark mode activated 🌙" : "Light mode activated ☀️", "🎨");
+            });
+        }
+
+        // Cookie Consent Bar Logic
+        const cookieConsentBar = document.getElementById("cookieConsent");
+        const acceptBtn = document.getElementById("acceptCookies");
+
+        if (!checkCookieConsent() && cookieConsentBar) {
+            cookieConsentBar.style.display = "flex";
+        }
+
+        if (acceptBtn) {
+            acceptBtn.addEventListener("click", () => {
+                setCookie("cookiesAccepted", "true", 365);
+                setCookie("theme", isDark ? "dark" : "light", 365);
+                if (cookieConsentBar) cookieConsentBar.style.display = "none";
+                showMessage("Cookies accepted! Your preferences are now saved. 🍪", "✅");
+            });
+        }
+
+        if (verifiedBadge) {
+            verifiedBadge.addEventListener("click", () => {
+                verifiedBadge.style.transform = "scale(1.15)";
+                setTimeout(() => { verifiedBadge.style.transform = ""; }, 200);
+                showMessage("✓ Verified Professional", "✅");
+            });
+        }
+
+        function showMessage(msg, icon = "✨") {
+            const existing = document.querySelector(".toast-msg");
+            if (existing) existing.remove();
+            const toast = document.createElement("div");
+            toast.className = "toast-msg";
+            toast.innerHTML = `<i class="fas ${icon === '✅' ? 'fa-check-circle' : 'fa-info-circle'}"></i> ${msg}`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                setTimeout(() => toast.remove(), 300);
+            }, 2600);
+        }
+
+        // Contact items click
+        document.querySelectorAll(".contact-item").forEach(el => {
+            el.addEventListener("click", () => {
+                const link = el.getAttribute("data-link");
+                if (link && link !== "#") {
+                    window.open(link, "_blank");
+                } else {
+                    showMessage("Let's connect & build something amazing!", "🤝");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
